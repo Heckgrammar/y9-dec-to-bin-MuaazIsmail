@@ -11,7 +11,32 @@ namespace Y9_DEC_TO_BIN_SKELETON
         static void Main(string[] args)
         {
             Console.WriteLine("Enter an integer you want to convert to binary");
-            int userNum = Int32.Parse(Console.ReadLine());
+            bool validity = false;
+            int userNum = 0;
+            string numString = "  ";
+            while (validity == false)
+            {
+                int errors = 0;
+                numString = Console.ReadLine();
+                bool isNum = int.TryParse(numString, out userNum);
+                if (isNum == false)
+                {
+                    errors++;
+                    Console.WriteLine("The input should be a numerical value");
+                }
+                else
+                {
+                    if (userNum < 1)
+                    {
+                        errors++;
+                        Console.WriteLine("The number must be greater than 0");
+                    }
+                }
+                if (errors == 0)
+                {
+                    validity = true;
+                }
+            }
             Console.WriteLine(userNum + " is " + (numberConversion(userNum, 2)) + " in binary");
         }
 
