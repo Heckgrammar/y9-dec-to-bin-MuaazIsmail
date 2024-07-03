@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Y9_DEC_TO_BIN_SKELETON
 {
@@ -10,34 +6,44 @@ namespace Y9_DEC_TO_BIN_SKELETON
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter an integer you want to convert to binary");
-            bool validity = false;
-            int userNum = 0;
-            string numString = "  ";
-            while (validity == false)
+            string again = "1";
+            while (again == "1")
             {
-                int errors = 0;
-                numString = Console.ReadLine();
-                bool isNum = int.TryParse(numString, out userNum);
-                if (isNum == false)
+                Console.WriteLine("");
+                Console.WriteLine("Enter an integer you want to convert to binary");
+                bool validity = false;
+                int userNum = 0;
+                string numString = "  ";
+                while (validity == false)
                 {
-                    errors++;
-                    Console.WriteLine("The input should be a numerical value");
-                }
-                else
-                {
-                    if (userNum < 1)
+                    int errors = 0;
+                    numString = Console.ReadLine();
+                    bool isNum = int.TryParse(numString, out userNum);
+                    if (isNum == false)
                     {
                         errors++;
-                        Console.WriteLine("The number must be greater than 0");
+                        Console.WriteLine("The input should be a numerical value");
+                    }
+                    else
+                    {
+                        if (userNum < 1)
+                        {
+                            errors++;
+                            Console.WriteLine("The number must be greater than 0");
+                        }
+                    }
+                    if (errors == 0)
+                    {
+                        validity = true;
                     }
                 }
-                if (errors == 0)
-                {
-                    validity = true;
-                }
+                Console.WriteLine(userNum + " is " + (numberConversion(userNum, 2)) + " in binary");
+                Console.WriteLine("");
+                Console.WriteLine("Do you want another try?");
+                Console.WriteLine("if yes type: 1");
+                Console.WriteLine("if no type anything else.");
+                again = Console.ReadLine();
             }
-            Console.WriteLine(userNum + " is " + (numberConversion(userNum, 2)) + " in binary");
         }
 
         //static void means the function will not return a value so it does not need a data type 
